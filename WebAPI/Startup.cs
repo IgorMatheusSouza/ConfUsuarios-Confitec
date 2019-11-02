@@ -8,6 +8,14 @@
     using MediatR;
     using Infrastructure.Data.Context;
     using Microsoft.EntityFrameworkCore;
+    using Application.Abstraction.Services;
+    using Application.Services;
+    using Application.Abstraction.Adapters;
+    using Application.Adapters.Usuario;
+    using System.Collections.Generic;
+    using Domain.CQ.Usuario.Queries;
+    using Domain.CQ.Usuario.QueryHandlers;
+    using Domain.Entity;
 
     public class Startup
     {
@@ -25,10 +33,15 @@
 
             services.AddMediatR(typeof(Startup));
 
-
             var conexaoBase = Configuration["SqlServerSetting:ConnectionString"];
-            services.AddDbContext<ConfitecContext>(options => options.UseSqlServer(conexaoBase));
+            services.AddDbContext<ConfitecContext>(options => options.UseSqlServer(conexaoBase)).AddUnitOfWork<ConfitecContext>();
 
+            services.AddTransient<IUsuarioService, UsuarioService>()
+                    .AddTransient<IUsuarioAdapter, UsuarioAdapter>()
+                    .AddTransient<IUsuarioService, UsuarioService>()
+                    .AddScoped<IRequestHandler<GetTodosUsuariosQuery, IEnumerable<Usuario>>, GetTodosUsuariosQueryHandler>();
+
+            services.AddScoped<DbContext, ConfitecContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

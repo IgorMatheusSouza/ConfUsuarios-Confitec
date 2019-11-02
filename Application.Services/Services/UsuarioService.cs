@@ -1,21 +1,26 @@
 ﻿namespace Application.Services
 {
+    using Application.Abstraction.Adapters;
     using Application.Abstraction.Services;
+    using Application.DTO.Usuario;
+    using Domain.CQ.Usuario.Queries;
     using MediatR;
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
 
     public class UsuarioService : ServiceBase, IUsuarioService
     {
-        public UsuarioService(IMediator mediator) : base(mediator)
+        private readonly IUsuarioAdapter UsuarioAdapter;
+
+        public UsuarioService(IMediator mediator, IUsuarioAdapter usuarioAdapter) : base(mediator)
         {
+            this.UsuarioAdapter = usuarioAdapter;
         }
 
-        public Task<string> GetTodosUsuario()
+        public async Task<IEnumerable<UsuarioDTO>> GetTodosUsuariosAsync()
         {
-            throw new NotImplementedException();
+           var usuarios = await this.Mediator.Send(new GetTodosUsuariosQuery());
+            return this.UsuarioAdapter.Adapt(usuarios);
         }
     }
 }

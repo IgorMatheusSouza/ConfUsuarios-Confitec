@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Application.Abstraction\Application.Abstraction.csproj" />
+    <ProjectReference Include="..\Application.Adapters\Application.Adapters.csproj" />
+    <ProjectReference Include="..\Application.Services\Application.Services.csproj" />
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
   </ItemGroup>
 

@@ -8,11 +8,11 @@
     {
         public Usuario(int id, string nome, string sobrenome, string email, DateTime dataNascimento, EscolaridadeEnum escolaridade) : base(id)
         {
-            Nome = nome;
-            Sobrenome = sobrenome;
-            Email = email;
-            DataNascimento = dataNascimento;
-            Escolaridade = escolaridade;
+            this.Nome = nome;
+            this.Sobrenome = sobrenome;
+            this.Email = email;
+            this.DataNascimento = dataNascimento;
+            this.Escolaridade = escolaridade;
         }
 
         public string Nome { get; private set; }

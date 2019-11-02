@@ -1,9 +1,11 @@
 ﻿namespace Application.Abstraction.Services
 {
+    using Application.DTO.Usuario;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IUsuarioService
     {
-        Task<string> GetTodosUsuario();
+        Task<IEnumerable<UsuarioDTO>> GetTodosUsuariosAsync();
     }
 }

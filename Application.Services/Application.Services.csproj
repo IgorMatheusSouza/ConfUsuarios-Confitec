@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.Abstraction\Application.Abstraction.csproj" />
+    <ProjectReference Include="..\Domain.CQ\Domain.CQ.csproj" />
   </ItemGroup>
 
 </Project>
