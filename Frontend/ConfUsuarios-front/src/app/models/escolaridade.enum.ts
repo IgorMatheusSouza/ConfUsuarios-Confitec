@@ -1,6 +1,6 @@
 export enum escolaridade {
-  Infantil = 1,
-  Fundamental,
-  Medio,
-  Superior
+  'Infantil' = 1,
+  'Fundamental',
+  'Médio',
+  'Superior'
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { ListaUsuariosComponent } from './views/usuario/lista-usuarios/lista-usuarios.component';
+import { FormUsuarioComponent } from './views/usuario/form-usuario/form-usuario.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'usuarios',
     component: ListaUsuariosComponent
+  },
+  {
+    path: 'usuarios/cadastrar',
+    component: FormUsuarioComponent
   }
 ];
 
