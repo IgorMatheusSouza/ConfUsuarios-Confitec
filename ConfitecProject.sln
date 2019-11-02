@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{FE588B80-CFE5-4E04-A9C5-47452F451506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "Backend\WebAPI\WebAPI.csproj", "{FE588B80-CFE5-4E04-A9C5-47452F451506}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Presentation", "1- Presentation", "{CDDA976C-01EA-4A33-A1CD-8B01005FF58C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2- Application", "2- Application", "{2A667F75-0CA7-4859-A96A-9224DF1FA070}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Services", "Application.Services\Application.Services.csproj", "{A81F95DD-611B-4EF7-BB1A-627F7082055A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Services", "Backend\Application.Services\Application.Services.csproj", "{A81F95DD-611B-4EF7-BB1A-627F7082055A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.DTO", "Application.DTO\Application.DTO.csproj", "{4E9BAC5F-F8B3-41AA-BEBC-70259018EA71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.DTO", "Backend\Application.DTO\Application.DTO.csproj", "{4E9BAC5F-F8B3-41AA-BEBC-70259018EA71}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3- Domain", "3- Domain", "{C9F570E0-EF6A-467B-9689-7088BD7A511B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{FFC48FA6-67CA-4D21-9A0A-6E55CA41B995}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Abstraction", "Application.Abstraction\Application.Abstraction.csproj", "{6B641253-200C-4897-83D6-5D0F1C6250F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Abstraction", "Backend\Application.Abstraction\Application.Abstraction.csproj", "{6B641253-200C-4897-83D6-5D0F1C6250F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.CQ", "Domain.CQ\Domain.CQ.csproj", "{6A73C6A9-2B6A-4994-8B44-F2D7337B69A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.CQ", "Backend\Domain.CQ\Domain.CQ.csproj", "{6A73C6A9-2B6A-4994-8B44-F2D7337B69A3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Model", "Domain.Model\Domain.Model.csproj", "{8F5A95C7-DF68-4712-9E75-BDE85D126220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Model", "Backend\Domain.Model\Domain.Model.csproj", "{8F5A95C7-DF68-4712-9E75-BDE85D126220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data", "Infrastructure.Data\Infrastructure.Data.csproj", "{553A48C9-ACC5-4279-8A6A-EE6DA75C1256}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data", "Backend\Infrastructure.Data\Infrastructure.Data.csproj", "{553A48C9-ACC5-4279-8A6A-EE6DA75C1256}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Adapters", "Application.Adapters\Application.Adapters.csproj", "{78F07EA5-C261-4385-8567-869D76166DCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Adapters", "Backend\Application.Adapters\Application.Adapters.csproj", "{78F07EA5-C261-4385-8567-869D76166DCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
