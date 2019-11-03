@@ -16,6 +16,8 @@
     using Domain.CQ.Usuario.Queries;
     using Domain.CQ.Usuario.QueryHandlers;
     using Domain.Entity;
+    using Domain.CQ.Usuarios.CommandHandlers;
+    using Domain.CQ.Usuario.Commands;
 
     public class Startup
     {
@@ -53,7 +55,8 @@
             services.AddTransient<IUsuarioService, UsuarioService>()
                     .AddTransient<IUsuarioAdapter, UsuarioAdapter>()
                     .AddTransient<IUsuarioService, UsuarioService>()
-                    .AddScoped<IRequestHandler<GetTodosUsuariosQuery, IEnumerable<Usuario>>, GetTodosUsuariosQueryHandler>();
+                    .AddScoped<IRequestHandler<GetTodosUsuariosQuery, IEnumerable<Usuario>>, GetTodosUsuariosQueryHandler>()
+                    .AddScoped<IRequestHandler<CadastrarUsuarioCommand, Unit>, CadastrarUsuariosCommandHandler>();
 
             services.AddScoped<DbContext, ConfitecContext>();
         }

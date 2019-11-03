@@ -20,7 +20,7 @@
 
         public async Task<IEnumerable<Usuario>> Handle(GetTodosUsuariosQuery request, CancellationToken cancellationToken)
         {
-            var result = await _usuarioRepository.GetPagedListAsync(pageSize: int.MaxValue);
+            var result = await this._usuarioRepository.GetPagedListAsync(pageSize: int.MaxValue);
             return result.Items.ToList();
         }
     }

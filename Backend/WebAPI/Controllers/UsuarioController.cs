@@ -3,6 +3,7 @@
     using System.Net;
     using System.Threading.Tasks;
     using Application.Abstraction.Services;
+    using Application.DTO.Usuario;
     using Microsoft.AspNetCore.Mvc;
 
     [Route("api/[controller]")]
@@ -20,14 +21,12 @@
         /// Cria um usuário.
         /// </summary>
         /// <param name="request">Informações do usuário.</param>
-        /// <returns>Returns the asynchronous operation.</returns>
+        /// <returns>Retorna uma operação.</returns>
         [HttpPost]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType((int)HttpStatusCode.Conflict)]
-        [ProducesResponseType((int)HttpStatusCode.Accepted)]
-        public async Task<IActionResult> PostAsync([FromBody] string value)
+        public async Task<IActionResult> PostAsync([FromBody]UsuarioDTO usuario)
         {
-            return this.Accepted();
+            await _usuarioService.CadastrarUsuario(usuario);
+            return this.Ok();
         }
 
         /// <summary>

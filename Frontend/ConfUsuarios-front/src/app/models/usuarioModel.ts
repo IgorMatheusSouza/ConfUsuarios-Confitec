@@ -1,6 +1,6 @@
-import { escolaridade } from "./escolaridade.enum";
+import { escolaridade } from './escolaridade.enum';
 
-export class Usuario  {
+export class Usuario {
   public nome: string;
   public sobrenome: string;
   public email: string;

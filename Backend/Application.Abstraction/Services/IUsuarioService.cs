@@ -7,5 +7,7 @@
     public interface IUsuarioService
     {
         Task<IEnumerable<UsuarioDTO>> GetTodosUsuariosAsync();
+
+        Task CadastrarUsuario(UsuarioDTO usuario);
     }
 }

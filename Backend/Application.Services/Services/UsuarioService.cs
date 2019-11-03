@@ -3,6 +3,7 @@
     using Application.Abstraction.Adapters;
     using Application.Abstraction.Services;
     using Application.DTO.Usuario;
+    using Domain.CQ.Usuario.Commands;
     using Domain.CQ.Usuario.Queries;
     using MediatR;
     using System.Collections.Generic;
@@ -17,10 +18,15 @@
             this.UsuarioAdapter = usuarioAdapter;
         }
 
+        public async Task CadastrarUsuario(UsuarioDTO usuario)
+        {
+            await this.Mediator.Send(new CadastrarUsuarioCommand(this.UsuarioAdapter.Adapt(usuario)));
+        }
+
         public async Task<IEnumerable<UsuarioDTO>> GetTodosUsuariosAsync()
         {
            var usuarios = await this.Mediator.Send(new GetTodosUsuariosQuery());
-            return this.UsuarioAdapter.Adapt(usuarios);
+           return this.UsuarioAdapter.Adapt(usuarios);
         }
     }
 }
