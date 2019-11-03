@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'usuarios/cadastrar',
     component: FormUsuarioComponent
+  },
+  {
+    path: 'usuarios/editar/:id',
+    component: FormUsuarioComponent
   }
 ];
 

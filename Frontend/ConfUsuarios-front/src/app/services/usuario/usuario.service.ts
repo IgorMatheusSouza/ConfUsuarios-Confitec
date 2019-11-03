@@ -19,6 +19,10 @@ export class UsuarioService {
     return this.httpClient.get(this.apiEndPoint).pipe(map((Response: any) => Response));
   }
 
+  public getUsuario(id: number): Observable<Usuario> {
+    return this.httpClient.get(`${this.apiEndPoint}${id}`).pipe(map((Response: any) => Response));
+  }
+
   public cadastrarUsuario(usuario: Usuario) {
     return this.httpClient.post(this.apiEndPoint, usuario).pipe();
   }

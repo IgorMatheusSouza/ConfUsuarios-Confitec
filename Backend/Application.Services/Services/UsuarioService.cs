@@ -18,7 +18,7 @@
             this.UsuarioAdapter = usuarioAdapter;
         }
 
-        public async Task CadastrarUsuario(UsuarioDTO usuario)
+        public async Task CadastrarUsuarioAsync(UsuarioDTO usuario)
         {
             await this.Mediator.Send(new CadastrarUsuarioCommand(this.UsuarioAdapter.Adapt(usuario)));
         }
@@ -27,6 +27,12 @@
         {
            var usuarios = await this.Mediator.Send(new GetTodosUsuariosQuery());
            return this.UsuarioAdapter.Adapt(usuarios);
+        }
+
+        public async Task<UsuarioDTO> GetUsuarioAsync(int id)
+        {
+            var usuario = await this.Mediator.Send(new GetUsuarioQuery(id));
+            return this.UsuarioAdapter.Adapt(usuario);
         }
     }
 }

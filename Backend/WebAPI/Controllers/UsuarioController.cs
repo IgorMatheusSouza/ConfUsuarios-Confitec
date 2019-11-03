@@ -25,7 +25,7 @@
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody]UsuarioDTO usuario)
         {
-            await _usuarioService.CadastrarUsuario(usuario);
+            await _usuarioService.CadastrarUsuarioAsync(usuario);
             return this.Ok();
         }
 
@@ -36,5 +36,13 @@
         [HttpGet]
         [Produces("application/json")]
         public async Task<IActionResult> GetAsync() => this.Ok(await _usuarioService.GetTodosUsuariosAsync());
+
+        /// <summary>
+        /// Obtem o usuário que corresponde ao id enviado.
+        /// </summary>
+        /// <returns> Retorna um usuario cadastrado.</returns>
+        [HttpGet("{id}")]
+        [Produces("application/json")]
+        public async Task<IActionResult> GetPeloIdAsync(int id) => this.Ok(await _usuarioService.GetUsuarioAsync(id));
     }
 }

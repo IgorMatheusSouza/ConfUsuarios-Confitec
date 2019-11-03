@@ -8,6 +8,8 @@
     {
         Task<IEnumerable<UsuarioDTO>> GetTodosUsuariosAsync();
 
-        Task CadastrarUsuario(UsuarioDTO usuario);
+        Task<UsuarioDTO> GetUsuarioAsync(int id);
+
+        Task CadastrarUsuarioAsync(UsuarioDTO usuario);
     }
 }

@@ -3,6 +3,7 @@ import { escolaridade } from 'src/app/models/escolaridade.enum';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from 'src/app/models/UsuarioModel';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-usuario',
@@ -13,7 +14,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class FormUsuarioComponent implements OnInit {
   valoresEscolaridade = Object.keys(escolaridade).filter(e => !isNaN(+e)).map(o => ({ index: +o, name: escolaridade[o] })); // Obtem os valores do enum escolaridade
 
-
   usuario = new FormGroup({
     nome: new FormControl(''),
     sobrenome: new FormControl(''),
@@ -22,10 +22,15 @@ export class FormUsuarioComponent implements OnInit {
     escolaridade: new FormControl('')
   });
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.valoresEscolaridade);
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    if (id) {
+      this.usuarioService.getUsuario(id).subscribe(result => {
+        this.usuario.patchValue(result as Usuario);
+      });
+    }
   }
 
   cadastrarUsuario() {

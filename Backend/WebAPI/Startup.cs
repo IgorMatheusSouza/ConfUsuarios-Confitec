@@ -18,6 +18,7 @@
     using Domain.Entity;
     using Domain.CQ.Usuarios.CommandHandlers;
     using Domain.CQ.Usuario.Commands;
+    using Swashbuckle.AspNetCore.Swagger;
 
     public class Startup
     {
@@ -56,9 +57,15 @@
                     .AddTransient<IUsuarioAdapter, UsuarioAdapter>()
                     .AddTransient<IUsuarioService, UsuarioService>()
                     .AddScoped<IRequestHandler<GetTodosUsuariosQuery, IEnumerable<Usuario>>, GetTodosUsuariosQueryHandler>()
-                    .AddScoped<IRequestHandler<CadastrarUsuarioCommand, Unit>, CadastrarUsuariosCommandHandler>();
+                    .AddScoped<IRequestHandler<GetUsuarioQuery, Usuario>, GetUsuarioQueryHandler>()
+                    .AddScoped<IRequestHandler<CadastrarUsuarioCommand, Unit>, CadastrarUsuarioCommandHandler>();
 
             services.AddScoped<DbContext, ConfitecContext>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "ConfUsuarios", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,10 +80,15 @@
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseCors("Dev");
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ConfUsuarios");
+            });
         }
     }
 }

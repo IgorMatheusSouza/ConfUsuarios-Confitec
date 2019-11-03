@@ -7,13 +7,13 @@
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class CadastrarUsuariosCommandHandler : IRequestHandler<CadastrarUsuarioCommand>
+    public class CadastrarUsuarioCommandHandler : IRequestHandler<CadastrarUsuarioCommand>
     {
         private readonly IRepository<Usuario> _usuarioRepository;
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public CadastrarUsuariosCommandHandler(IRepositoryFactory repositoryFactory, IUnitOfWork unitOfWork)
+        public CadastrarUsuarioCommandHandler(IRepositoryFactory repositoryFactory, IUnitOfWork unitOfWork)
         {
             this._usuarioRepository = repositoryFactory.GetRepository<Usuario>();
             this._unitOfWork = unitOfWork;
