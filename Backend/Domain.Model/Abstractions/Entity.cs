@@ -20,8 +20,7 @@
 
         public override int GetHashCode()
         {
-            // TODO: Fix this
-            return 2108858624 + EqualityComparer<TIdentifier>.Default.GetHashCode(Id);
+            return EqualityComparer<TIdentifier>.Default.GetHashCode(Id);
         }
     }
 }

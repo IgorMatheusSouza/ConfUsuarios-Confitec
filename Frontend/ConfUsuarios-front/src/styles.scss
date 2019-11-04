@@ -8,6 +8,16 @@ $laranja-padrao: #f9a649 !default;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.laranja-padrao {
+.laranja-padrao, a {
   color: $laranja-padrao!important;
+  cursor:pointer;
 }
+
+a{
+  font-weight: 450;
+}
+
+a:hover{
+  color: #b76c17 !important;
+}
+

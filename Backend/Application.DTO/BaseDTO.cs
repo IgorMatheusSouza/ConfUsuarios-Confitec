@@ -2,6 +2,8 @@
 {
     public abstract class BaseDTO
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
+
+        protected const string MensagemErro = " deve ser preenchido corretamente.";
     }
 }

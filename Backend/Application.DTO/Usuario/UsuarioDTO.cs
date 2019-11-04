@@ -2,6 +2,7 @@
 {
     using Domain.Model.Enumerators;
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Text.RegularExpressions;
     using WebAPI.ExceptionHandler;
 
@@ -18,15 +19,20 @@
             this.Imagem = imagem;
         }
 
-        public string Nome { get; private set; }
+        [Required(ErrorMessage = nameof(Nome) + MensagemErro)]
+        public string Nome { get; set; }
 
-        public string Sobrenome { get; private set; }
+        [Required(ErrorMessage = nameof(Sobrenome) + MensagemErro)]
+        public string Sobrenome { get; set; }
 
-        public string Email { get; private set; }
+        [Required(ErrorMessage = nameof(Email) + MensagemErro)]
+        public string Email { get; set; }
 
-        public DateTime DataNascimento { get; private set; }
+        [Required(ErrorMessage = nameof(DataNascimento) + MensagemErro)]
+        public DateTime DataNascimento { get; set; }
 
-        public EscolaridadeEnum Escolaridade { get; private set; }
+        [Required(ErrorMessage = nameof(Escolaridade) + MensagemErro)]
+        public EscolaridadeEnum Escolaridade { get; set; }
 
         public string Imagem { get; set; }
 

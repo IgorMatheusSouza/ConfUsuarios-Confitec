@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormUsuarioComponent } from './views/usuario/form-usuario/form-usuario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSquare } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { NotifierModule } from 'angular-notifier';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    FontAwesomeModule,
     NotifierModule.withConfig({
       position: {
         horizontal: {
@@ -78,4 +82,7 @@ import { NotifierModule } from 'angular-notifier';
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+  }
+}
