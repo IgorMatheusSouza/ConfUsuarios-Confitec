@@ -74,6 +74,15 @@ $laranja-padrao: #f9a649 !default;
   margin-right: 0px;
 }
 
+.btn-defaul:hover{
+  background-color: transparent!important;
+}
+
+.btn-voltar:hover{
+  background-color: transparent!important;
+  border-color:none!important;
+}
+
 .profile-content {
   padding: 20px;
   background: #fff;
