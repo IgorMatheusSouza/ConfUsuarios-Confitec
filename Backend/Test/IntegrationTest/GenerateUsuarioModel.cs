@@ -9,7 +9,6 @@
         public UsuarioDTO usuarioDTOMock
         {
             get => new Faker<UsuarioDTO>()
-                .StrictMode(true)
                 .RuleFor(o => o.Nome, f => f.Person.FirstName)
                 .RuleFor(o => o.Sobrenome, f => f.Person.LastName)
                 .RuleFor(o => o.DataNascimento, f => f.Date.Past())

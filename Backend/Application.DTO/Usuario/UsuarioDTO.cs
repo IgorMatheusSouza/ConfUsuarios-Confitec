@@ -18,6 +18,7 @@
             this.Escolaridade = escolaridade;
             this.Imagem = imagem;
         }
+        public UsuarioDTO() { }
 
         [Required(ErrorMessage = nameof(Nome) + MensagemErro)]
         public string Nome { get; set; }

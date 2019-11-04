@@ -46,10 +46,10 @@ namespace Tests
             Assert.NotNull(usuarioGet);
 
             // Update
-            usuario.Nome = $"{usuario.Nome} teste Update";
-            await UpdateAsync(usuario);
+            usuarioGet.Nome = $"{usuario.Nome} teste Update";
+            await UpdateAsync(usuarioGet);
             usuarioGet = await GetByIdAsync(usuarioGet.Id);
-            Assert.Equals(usuarioGet.Nome, usuario.Nome);
+            Assert.AreNotEqual(usuarioGet.Nome, usuario.Nome);
 
             // Delete
             await DeleteAsync(usuarioGet.Id);            
