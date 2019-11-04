@@ -1,5 +1,13 @@
 @import "~bootswatch/dist/darkly/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/darkly/bootswatch";
+@import '~angular-notifier/styles';
+
+$laranja-padrao: #f9a649 !default;
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.laranja-padrao {
+  color: $laranja-padrao!important;
+}

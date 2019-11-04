@@ -18,9 +18,21 @@
             this.UsuarioAdapter = usuarioAdapter;
         }
 
+        public async Task AtualizarUsuarioAsync(UsuarioDTO usuario)
+        {
+            usuario.ValidarDados();
+            await this.Mediator.Send(new AtualizarUsuarioCommand(this.UsuarioAdapter.Adapt(usuario)));
+        }
+
         public async Task CadastrarUsuarioAsync(UsuarioDTO usuario)
         {
+            usuario.ValidarDados();
             await this.Mediator.Send(new CadastrarUsuarioCommand(this.UsuarioAdapter.Adapt(usuario)));
+        }
+
+        public async Task DeletarUsuarioAsync(int id)
+        {
+            await this.Mediator.Send(new DeletarUsuarioCommand(id));
         }
 
         public async Task<IEnumerable<UsuarioDTO>> GetTodosUsuariosAsync()

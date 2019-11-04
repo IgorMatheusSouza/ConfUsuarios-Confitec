@@ -26,4 +26,12 @@ export class UsuarioService {
   public cadastrarUsuario(usuario: Usuario) {
     return this.httpClient.post(this.apiEndPoint, usuario).pipe();
   }
+
+  public atualizarUsuario(usuario: Usuario) {
+    return this.httpClient.put(this.apiEndPoint, usuario).pipe();
+  }
+
+  public deletarUsuario(id: number) {
+    return this.httpClient.delete(`${this.apiEndPoint}${id}`).pipe();
+  }
 }

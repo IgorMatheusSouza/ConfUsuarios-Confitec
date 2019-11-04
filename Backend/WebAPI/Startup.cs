@@ -15,10 +15,12 @@
     using System.Collections.Generic;
     using Domain.CQ.Usuario.Queries;
     using Domain.CQ.Usuario.QueryHandlers;
-    using Domain.Entity;
+    using Domain.Model.Entity;
     using Domain.CQ.Usuarios.CommandHandlers;
     using Domain.CQ.Usuario.Commands;
     using Swashbuckle.AspNetCore.Swagger;
+    using Domain.CQ.Usuario.CommandHandlers;
+    using WebAPI.ExceptionHandler;
 
     public class Startup
     {
@@ -46,7 +48,7 @@
                     });
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(config => config.Filters.Add(new GlobalExceptionHandler())).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddMediatR(typeof(Startup));
 
@@ -58,7 +60,9 @@
                     .AddTransient<IUsuarioService, UsuarioService>()
                     .AddScoped<IRequestHandler<GetTodosUsuariosQuery, IEnumerable<Usuario>>, GetTodosUsuariosQueryHandler>()
                     .AddScoped<IRequestHandler<GetUsuarioQuery, Usuario>, GetUsuarioQueryHandler>()
-                    .AddScoped<IRequestHandler<CadastrarUsuarioCommand, Unit>, CadastrarUsuarioCommandHandler>();
+                    .AddScoped<IRequestHandler<CadastrarUsuarioCommand, Unit>, CadastrarUsuarioCommandHandler>()
+                    .AddScoped<IRequestHandler<AtualizarUsuarioCommand, Unit>, AtualizarUsuarioCommandHandler>()
+                    .AddScoped<IRequestHandler<DeletarUsuarioCommand, Unit>, DeletarUsuarioCommandHandler>();
 
             services.AddScoped<DbContext, ConfitecContext>();
 
@@ -68,7 +72,6 @@
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -77,7 +80,6 @@
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseCors("Dev");

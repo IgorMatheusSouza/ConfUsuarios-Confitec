@@ -1,27 +1,55 @@
-<form class="example-form" [formGroup]="usuario" (ngSubmit)="cadastrarUsuario()">
-  <div class="row">
-    <div class="col-md-10 offset-md-1">
+<form class="example-form" [formGroup]="usuario" (ngSubmit)="salvarUsuario()">
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <div class="profile-sidebar position-fixed">
+        <div class="profile-userpic">
+          <img src="{{usuario.value.imagem}}" class="img-responsive" alt="">
+        </div>
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            {{usuario.value.nome}} {{usuario.value.sobrenome}}
+          </div>
+          <div class="profile-usertitle-job">
+            {{usuario.value.email}}
+          </div>
+        </div>
+        <div class="profile-userbuttons">
+          <mat-form-field class="col-md-12 margin-email">
+            <input matInput placeholder="link da imagem" formControlName="imagem">
+          </mat-form-field>
+        </div>
+        <div class="profile-userbuttons">
+          <button type="button" class="btn btn-danger btn-sm">Deletar esse usuário do sistema</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
       <mat-form-field class="col-md-6">
-        <input matInput placeholder="Nome" formControlName="nome">
+        <input matInput placeholder="Nome" formControlName="nome" required maxlength="20">
       </mat-form-field>
       <mat-form-field class="col-md-6">
-        <input matInput placeholder="Sobrenome" formControlName="sobrenome">
+        <input matInput placeholder="Sobrenome" formControlName="sobrenome" required maxlength="20">
       </mat-form-field>
       <mat-form-field class="col-md-12 margin-email">
-        <input matInput placeholder="E-mail" formControlName="email">
+        <input matInput placeholder="E-mail" formControlName="email" required maxlength="40">
       </mat-form-field>
       <mat-form-field class="col-md-6">
-        <input matInput placeholder="Data de nascimento" type="date" formControlName="dataNascimento">
+        <input matInput [matDatepicker]="picker" placeholder="Esolha uma data" formControlName="dataNascimento" required maxlength="40">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="col-md-6">
         <mat-label>Escolaridade</mat-label>
-        <mat-select formControlName="escolaridade">
+        <mat-select formControlName="escolaridade" required>
           <mat-option *ngFor="let enum of valoresEscolaridade" [value]="enum.index">
             {{enum.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <div class="row float-right mt-5">
+        <button type="submit" [disabled]="!usuario.valid" class="btn btn-primary ">Salvar</button>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
   </div>
 </form>
+<notifier-container></notifier-container>

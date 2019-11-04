@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Data.Context
 {
-    using Domain.Entity;
+    using Domain.Model.Entity;
     using Microsoft.EntityFrameworkCore;
 
     public class ConfitecContext : DbContext

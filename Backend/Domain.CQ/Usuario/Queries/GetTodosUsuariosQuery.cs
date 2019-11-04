@@ -2,7 +2,7 @@
 {
     using MediatR;
     using System.Collections.Generic;
-    using Domain.Entity;
+    using Domain.Model.Entity;
 
     public class GetTodosUsuariosQuery : IRequest<IEnumerable<Usuario>>
     {

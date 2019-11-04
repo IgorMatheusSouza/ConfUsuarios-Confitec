@@ -20,7 +20,7 @@
         /// <summary>
         /// Cria um usuário.
         /// </summary>
-        /// <param name="request">Informações do usuário.</param>
+        /// <param name="UsuarioDTO">Informações do usuário.</param>
         /// <returns>Retorna uma operação.</returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody]UsuarioDTO usuario)
@@ -40,9 +40,34 @@
         /// <summary>
         /// Obtem o usuário que corresponde ao id enviado.
         /// </summary>
-        /// <returns> Retorna um usuario cadastrado.</returns>
+        /// <param name="id"> Primary Key do usuário na base de dados.</param>
+        /// <returns> Retorna um usuario.</returns>
         [HttpGet("{id}")]
         [Produces("application/json")]
         public async Task<IActionResult> GetPeloIdAsync(int id) => this.Ok(await _usuarioService.GetUsuarioAsync(id));
+
+        /// <summary>
+        /// Atualiza o usuário.
+        /// </summary>
+        /// <param name="UsuarioDTO"> Informações do usuário.</param>
+        /// <returns> Retorna uma operação.</returns>
+        [HttpPut]
+        public async Task<IActionResult> PutAsync([FromBody]UsuarioDTO usuario)
+        {
+            await _usuarioService.AtualizarUsuarioAsync(usuario);
+            return this.Ok();
+        }
+
+        /// <summary>
+        /// Atualiza o usuário.
+        /// </summary>
+        /// <param name="UsuarioDTO"> Informações do usuário.</param>
+        /// <returns> Retorna uma operação.</returns>
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            await _usuarioService.DeletarUsuarioAsync(id);
+            return this.Ok();
+        }
     }
 }

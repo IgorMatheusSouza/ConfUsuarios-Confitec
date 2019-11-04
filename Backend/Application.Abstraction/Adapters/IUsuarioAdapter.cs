@@ -2,7 +2,7 @@
 {
     using Application.Abstraction.Adapters;
     using Application.DTO.Usuario;
-    using Domain.Entity;
+    using Domain.Model.Entity;
     using System.Collections.Generic;
 
     public interface IUsuarioAdapter : 

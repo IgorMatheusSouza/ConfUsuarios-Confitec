@@ -1,9 +1,8 @@
 ﻿namespace Domain.CQ.Usuario.QueryHandlers
 {
-
     using Domain.CQ.Usuario.Queries;
     using MediatR;
-    using Domain.Entity;
+    using Domain.Model.Entity;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;

@@ -4,19 +4,13 @@
     using System.Linq;
     using Application.Abstraction.Adapters;
     using Application.DTO.Usuario;
-    using Domain.Entity;
+    using Domain.Model.Entity;
 
     public class UsuarioAdapter : IUsuarioAdapter
     {
-        public Usuario Adapt(UsuarioDTO source)
-        {
-            return new Usuario(source.Id, source.Nome, source.Sobrenome, source.Email, source.DataNascimento, source.Escolaridade);
-        }
+        public Usuario Adapt(UsuarioDTO source) => new Usuario(source.Id, source.Nome, source.Sobrenome, source.Email, source.DataNascimento, source.Escolaridade, source.Imagem);
 
-        public UsuarioDTO Adapt(Usuario source)
-        {
-            return new UsuarioDTO(source.Id, source.Nome, source.Sobrenome, source.Email, source.DataNascimento, source.Escolaridade);
-        }
+        public UsuarioDTO Adapt(Usuario source) => new UsuarioDTO(source.Id, source.Nome, source.Sobrenome, source.Email, source.DataNascimento, source.Escolaridade, source.Imagem);
 
         public IEnumerable<Usuario> Adapt(IEnumerable<UsuarioDTO> source) => source.Select(x => this.Adapt(x)).ToList();
 

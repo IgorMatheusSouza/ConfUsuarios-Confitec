@@ -1,6 +1,6 @@
 ﻿namespace Domain.CQ.Usuario.Commands
 {
-    using Domain.Entity;
+    using Domain.Model.Entity;
     using Domain.CQ.Abstraction;
 
     public class CadastrarUsuarioCommand : Command<Usuario>

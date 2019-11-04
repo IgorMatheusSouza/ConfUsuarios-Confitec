@@ -1,27 +1,28 @@
-﻿namespace Domain.CQ.Usuarios.CommandHandlers
+﻿namespace Domain.CQ.Usuario.CommandHandlers
 {
     using System.Threading;
     using System.Threading.Tasks;
     using Domain.CQ.Usuario.Commands;
-    using Domain.Model.Entity;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
+    using Domain.Model.Entity;
+    using Domain.Model.Enumerators;
 
-    public class CadastrarUsuarioCommandHandler : IRequestHandler<CadastrarUsuarioCommand>
+    public class DeletarUsuarioCommandHandler : IRequestHandler<DeletarUsuarioCommand>
     {
         private readonly IRepository<Usuario> _usuarioRepository;
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public CadastrarUsuarioCommandHandler(IRepositoryFactory repositoryFactory, IUnitOfWork unitOfWork)
+        public DeletarUsuarioCommandHandler(IRepositoryFactory repositoryFactory, IUnitOfWork unitOfWork)
         {
             this._usuarioRepository = repositoryFactory.GetRepository<Usuario>();
             this._unitOfWork = unitOfWork;
         }
 
-        public async Task<Unit> Handle(CadastrarUsuarioCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeletarUsuarioCommand request, CancellationToken cancellationToken)
         {
-            await this._usuarioRepository.InsertAsync(request.Message);
+            this._usuarioRepository.Delete(new Usuario(request.Message));
             await this._unitOfWork.SaveChangesAsync();
             return Unit.Task.Result;
         }

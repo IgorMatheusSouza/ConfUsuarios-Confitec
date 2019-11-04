@@ -11,5 +11,9 @@
         Task<UsuarioDTO> GetUsuarioAsync(int id);
 
         Task CadastrarUsuarioAsync(UsuarioDTO usuario);
+
+        Task AtualizarUsuarioAsync(UsuarioDTO usuario);
+
+        Task DeletarUsuarioAsync(int id);
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace Domain.CQ.Usuario.Queries
 {
     using MediatR;
-    using Domain.Entity;
+    using Domain.Model.Entity;
 
     public class GetUsuarioQuery  : IRequest<Usuario>
     {

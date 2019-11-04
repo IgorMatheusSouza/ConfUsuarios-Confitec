@@ -8,6 +8,7 @@ import { escolaridade } from 'src/app/models/escolaridade.enum';
   templateUrl: './lista-usuarios.component.html',
   styleUrls: ['./lista-usuarios.component.scss']
 })
+
 export class ListaUsuariosComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService) { }
@@ -24,5 +25,13 @@ export class ListaUsuariosComponent implements OnInit {
 
   formatarEscolaridade(valor: number) {
     return escolaridade[valor];
+  }
+
+  deletarUsuario(id: number) {
+    this.usuarioService.deletarUsuario(id).subscribe(response => {
+      this.usuarios = this.usuarios.filter(x => x.id !== id);
+    }, error => {
+
+    });
   }
 }
